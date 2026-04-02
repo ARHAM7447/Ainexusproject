@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Nexus</title>
+    <title>Omni AI</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
     <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
 </head>
@@ -12,50 +12,56 @@
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="logo">
-            <span>AI Nexus</span>
+            <span>Omni AI</span>
         </div>
-        <div class="nav-links">
+        <div class="nav-links" id="navLinks">
             <a href="{{ url_for('feedback') }}">Feedback</a>
             <a href="{{ url_for('about') }}">About Us</a>
             <a href="{{ url_for('signup') }}">signup</a>
             <a href="{{ url_for('login') }}">Login</a>
         </div>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </nav>
 
     <!-- Banner Image -->
-    <img src="{{ url_for('static', filename='ai banner.png') }}" alt="Banner Image" class="banner">
-
+    <img src="https://picsum.photos/id/1015/1920/1080" 
+         alt="AI Nexus Futuristic Banner" 
+         class="banner">
 
     <!-- Main Content Section -->
     <div class="main-content">
         <section class="banner">
-            <h1>Welcome to AI Nexus</h1>
+            <h1><span>Welcome to</span> <span>Omni AI</span></h1>
             <p>Experience the power of AI.</p>
         </section>
 
         <section class="ai-work-section">
             <div class="ai-box-container">
-                <div class="ai-box">
+                <div class="ai-box fade-in-scroll">
                     <h2>Smart Task Management</h2>
                     <p>Streamline your workflow with AI-powered task automation, boosting team efficiency and project delivery times.</p>
                 </div>
-                <div class="ai-box">
+                <div class="ai-box fade-in-scroll">
                     <h2>Personalized AI Assistance</h2>
                     <p>Get AI-driven insights tailored to your needs, providing personalized solutions that optimize everyday tasks.</p>
                 </div>
-                <div class="ai-box">
+                <div class="ai-box fade-in-scroll">
                     <h2>Seamless Integration</h2>
                     <p>Effortlessly integrate AI into your existing processes, improving collaboration and streamlining operations.</p>
                 </div>
-                <div class="ai-box">
+                <div class="ai-box fade-in-scroll">
                     <h2>AI-Powered Research</h2>
                     <p>Utilize AI tools to assist with research, analysis, and content generation, significantly reducing manual efforts.</p>
                 </div>
-                <div class="ai-box">
+                <div class="ai-box fade-in-scroll">
                     <h2>Advanced Data Analytics</h2>
                     <p>Make informed decisions with AI-driven analytics, leveraging big data insights to drive business strategies.</p>
                 </div>
-                <div class="ai-box">
+                <div class="ai-box fade-in-scroll">
                     <h2>AI for Communication</h2>
                     <p>Enhance team communication and customer engagement with AI tools for messaging, improving response times and accuracy.</p>
                 </div>
@@ -100,9 +106,41 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 YourWebsite. All Rights Reserved.</p>
+            <p>&copy; 2025 Omni AI. All Rights Reserved.</p>
         </div>
     </footer>
 
+    <script>
+        // Hamburger Menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 80) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll Animation for AI Boxes
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, i * 150);
+                }
+            });
+        }, { threshold: 0.25 });
+
+        document.querySelectorAll('.ai-box').forEach(box => observer.observe(box));
+    </script>
 </body>
 </html>

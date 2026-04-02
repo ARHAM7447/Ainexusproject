@@ -6,67 +6,129 @@
     <title>Language Detection and Translation</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-      body {
-    background: linear-gradient(to right, #6a11cb, #2575fc);
-    font-family: 'Poppins', sans-serif;
-    color: #333;
+     /* ==================== PREMIUM MODERN FORM PAGE ==================== */
+
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #312e81 100%);
+    color: #e2e8f0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
 }
 
 .container {
-    max-width: 600px;
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    padding: 25px;
-    margin: 40px auto;
+    max-width: 620px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.09);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
+    padding: 50px 45px;
+    border: 1px solid rgba(96, 165, 250, 0.25);
+    transition: all 0.4s ease;
 }
 
-.form-control, .form-control:focus {
-    border: 2px solid #4a90e2;
-    border-radius: 6px;
-    box-shadow: none;
-    transition: 0.3s;
+.container:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 35px 80px rgba(0, 0, 0, 0.6);
 }
 
+/* Heading */
+h1, h2 {
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, #bae6fd, #c4d0ff, #e0bbff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 35px;
+}
+
+/* Form Controls */
+.form-control {
+    width: 100%;
+    padding: 16px 20px;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    border-radius: 14px;
+    color: #e2e8f0;
+    font-size: 1.05rem;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.15);
+}
+
+/* Button */
 .btn-primary {
-    background: #ff7eb3;
+    width: 100%;
+    background: linear-gradient(90deg, #ec4899, #db2777);
+    color: white;
+    padding: 16px 24px;
+    font-size: 1.15rem;
+    font-weight: 700;
     border: none;
-    font-weight: 600;
-    padding: 12px;
-    border-radius: 6px;
-    transition: 0.3s;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    margin-top: 10px;
+    box-shadow: 0 10px 30px rgba(236, 72, 153, 0.4);
 }
 
 .btn-primary:hover {
-    background: #e64a68;
-    transform: scale(1.05);
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(236, 72, 153, 0.6);
+    background: linear-gradient(90deg, #db2777, #be185d);
 }
 
+/* Result Section */
 .result-section {
-    border-top: 2px solid #ddd;
-    padding-top: 20px;
-    margin-top: 20px;
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(148, 163, 184, 0.3);
     text-align: center;
 }
 
 .result-section h4 {
-    color: #2c3e50;
-    font-weight: 700;
+    color: #bae6fd;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
 }
 
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 768px) {
     .container {
-        max-width: 90%;
-        padding: 20px;
+        padding: 35px 25px;
+        margin: 20px auto;
     }
-    .btn-primary {
-        width: 100%;
+    
+    h1, h2 {
+        font-size: 2.1rem;
     }
 }
 
+@media (max-width: 480px) {
+    .container {
+        padding: 30px 20px;
+    }
+    
+    h1, h2 {
+        font-size: 1.9rem;
+    }
+}
     </style>
 </head>
 <body>

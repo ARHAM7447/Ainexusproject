@@ -4,34 +4,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Nexus - Sign Up</title>
+    <title>Omni AI - Sign Up</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/signup.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
-    <div class="nav-links">
-        <a href="{{ url_for('feedback') }}">Feedback</a>
-        <a href="{{ url_for('about') }}">About Us</a>
-        <a href="{{ url_for('login') }}">Login</a>
-        <a href="{{ url_for('index') }}">Home</a>
-    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <span>Omni AI</span>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="{{ url_for('feedback') }}">Feedback</a>
+            <a href="{{ url_for('about') }}">About Us</a>
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('index') }}">Home</a>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
     <div class="container">
-        <h2>Sign Up for AI Nexus</h2>
-        <form method="POST" action="/signup">
-            <div class="input-group">
-                <i class="fa fa-envelope"></i>
-                <input type="email" name="email" placeholder="Email" required>
+        <div class="signup-box">
+            <h2>Sign Up for Omni AI</h2>
+            
+            <form method="POST" action="/signup">
+                <div class="input-group">
+                    <i class="fa fa-envelope"></i>
+                    <input type="email" name="email" placeholder="Email Address" required>
+                </div>
+                
+                <div class="input-group">
+                    <i class="fa fa-lock"></i>
+                    <input type="password" name="password" placeholder="Create Password" required>
+                </div>
+
+                <button type="submit" class="signup-btn">Create Account</button>
+            </form>
+
+            <div class="link">
+                <p>Already have an account? 
+                    <a href="{{ url_for('login') }}">Login</a>
+                </p>
             </div>
-            <div class="input-group">
-                <i class="fa fa-lock"></i>
-                <input type="password" name="password" placeholder="Password" required>
-            </div>
-            <button type="submit">Sign Up</button>
-        </form>
-        
-        <div class="link">
-            <p>Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
         </div>
     </div>
+
+    <script>
+        // Hamburger Menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+
+    
 </body>
 </html>

@@ -7,128 +7,162 @@
 </head>
 
 <style>
-  /* General Styles */
-body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #f4f4f9, #e3e3ee);
+/* ==================== PREMIUM MODERN MCQ GENERATOR ==================== */
+
+* {
     margin: 0;
     padding: 0;
-    animation: fadeIn 0.8s ease-in-out;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+    color: #e2e8f0;
+    min-height: 100vh;
+    padding: 40px 20px;
+    animation: fadeIn 1s ease-out;
 }
 
 /* Container */
 .container {
-    width: 50%;
-    margin: 50px auto;
-    background: #fff;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease-in-out;
+    max-width: 720px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    padding: 45px 40px;
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(96, 165, 250, 0.25);
+    transition: all 0.4s ease;
 }
 
 .container:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
 }
 
 /* Heading */
 h1 {
     text-align: center;
-    color: #222;
-    font-size: 28px;
-    font-weight: bold;
+    font-size: 2.6rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, #bae6fd, #c4d0ff, #e0bbff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 35px;
+    letter-spacing: -1px;
 }
 
 /* Form Group */
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 28px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #bae6fd;
+    font-size: 1.05rem;
 }
 
 /* Inputs */
 input[type="file"],
 input[type="number"] {
     width: 100%;
-    padding: 12px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
-    transition: 0.3s;
+    padding: 16px 20px;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    border-radius: 14px;
+    color: #e2e8f0;
+    font-size: 1.05rem;
+    transition: all 0.3s ease;
 }
 
 input[type="file"]:hover,
-input[type="number"]:hover {
-    border-color: #007bff;
-    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+input[type="number"]:hover,
+input[type="file"]:focus,
+input[type="number"]:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.15);
+    outline: none;
 }
 
-/* Buttons */
+/* Button */
 button {
     width: 100%;
-    background: linear-gradient(135deg, #28a745, #218838);
+    background: linear-gradient(90deg, #22c55e, #16a34a);
     color: white;
-    padding: 12px 20px;
-    font-size: 18px;
+    padding: 16px 24px;
+    font-size: 1.15rem;
+    font-weight: 700;
     border: none;
-    border-radius: 8px;
+    border-radius: 16px;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.4s ease;
     position: relative;
     overflow: hidden;
+    margin-top: 10px;
+    box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3);
 }
 
 button:hover {
-    background: linear-gradient(135deg, #218838, #1e7e34);
-    transform: scale(1.05);
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(34, 197, 94, 0.5);
 }
 
-/* MCQ Box */
+button:active {
+    transform: scale(0.97);
+}
+
+/* MCQ Results */
 .mcq {
-    background: #f8f9fa;
-    padding: 15px;
-    margin: 15px 0;
-    border-radius: 8px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
+    background: rgba(255, 255, 255, 0.07);
+    padding: 22px;
+    margin: 18px 0;
+    border-radius: 16px;
+    border: 1px solid rgba(96, 165, 250, 0.2);
+    transition: all 0.4s ease;
+    backdrop-filter: blur(10px);
 }
 
 .mcq:hover {
-    transform: translateY(-5px);
+    transform: translateY(-6px);
+    border-color: #60a5fa;
+    box-shadow: 0 15px 35px rgba(96, 165, 250, 0.2);
 }
 
 .mcq p {
-    font-size: 18px;
-    font-weight: bold;
-}
-
-/* List */
-ul {
-    list-style: none;
-    padding: 0;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #bae6fd;
+    margin-bottom: 12px;
 }
 
 /* Links */
 a {
     display: inline-block;
-    padding: 12px 18px;
-    background: linear-gradient(135deg, #007bff, #0056b3);
+    padding: 14px 28px;
+    background: linear-gradient(90deg, #3b82f6, #60a5fa);
     color: white;
     text-decoration: none;
-    border-radius: 8px;
-    font-size: 16px;
-    transition: 0.3s ease-in-out;
+    border-radius: 14px;
+    font-weight: 600;
+    transition: all 0.4s ease;
+    margin-top: 10px;
 }
 
 a:hover {
-    background: linear-gradient(135deg, #0056b3, #004085);
-    transform: scale(1.05);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(96, 165, 250, 0.4);
 }
 
-/* Fade-in animation */
+/* Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(-10px);
+        transform: translateY(20px);
     }
     to {
         opacity: 1;
@@ -136,67 +170,40 @@ a:hover {
     }
 }
 
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 1024px) {
     .container {
-        width: 70%;
-        padding: 20px;
-    }
-    
-    h1 {
-        font-size: 26px;
-    }
-    
-    button {
-        font-size: 16px;
-        padding: 10px;
+        width: 80%;
+        padding: 35px 30px;
     }
 }
 
 @media (max-width: 768px) {
     .container {
-        width: 85%;
-        padding: 18px;
+        width: 90%;
+        padding: 30px 25px;
     }
     
     h1 {
-        font-size: 24px;
-    }
-    
-    input[type="file"],
-    input[type="number"] {
-        padding: 10px;
-        font-size: 14px;
-    }
-    
-    button {
-        font-size: 16px;
-        padding: 10px;
+        font-size: 2.2rem;
     }
 }
 
 @media (max-width: 480px) {
     .container {
         width: 95%;
-        padding: 15px;
+        padding: 25px 20px;
     }
     
     h1 {
-        font-size: 22px;
-    }
-    
-    input[type="file"],
-    input[type="number"] {
-        font-size: 14px;
-        padding: 8px;
+        font-size: 2rem;
     }
     
     button {
-        font-size: 14px;
-        padding: 10px;
+        padding: 14px;
+        font-size: 1.05rem;
     }
 }
-
 </style>
 <body>
     <div class="container">

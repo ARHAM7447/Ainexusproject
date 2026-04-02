@@ -3,22 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feedback - AI Nexus</title>
+    <title>Feedback - Omni AI</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/feedback.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+      
+
 </head>
 <body>
 
     <!-- Navbar -->
     <nav class="navbar">
         <div class="logo">
-            <span>AI Nexus</span>
+            <span>Omni AI</span>
         </div>
-        <div class="nav-links">
+        <div class="nav-links" id="navLinks">
             <a href="{{ url_for('about') }}">About Us</a>
             <a href="{{ url_for('signup') }}">Signup</a>
             <a href="{{ url_for('login') }}">Login</a>
             <a href="{{ url_for('index') }}">Home</a>          
+        </div>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </nav>
 
@@ -29,45 +37,39 @@
     </header>
 
     <!-- Feedback Form -->
-    <!-- Feedback Form -->
-<section class="feedback-container">
+    <section class="feedback-container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="flash-message alert-{{ category }}">
+                  {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
 
-    <!-- ✅ Flash Messages -->
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        {% for category, message in messages %}
-          <div class="flash-message alert-{{ category }}">
-              {{ message }}
-          </div>
-        {% endfor %}
-      {% endif %}
-    {% endwith %}
+        <form action="/feedback" method="POST">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
 
-    <form action="/feedback" method="POST">
-        <label for="name">Your Name:</label>
-        <input type="text" id="name" name="name" required>
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" required>
 
-        <label for="email">Your Email:</label>
-        <input type="email" id="email" name="email" required>
+            <label for="message">Your Feedback:</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
 
-        <label for="message">Your Feedback:</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
-
-        <button type="submit" class="submit-btn">Submit Feedback 🚀</button>
-    </form>
-</section>
+            <button type="submit" class="submit-btn">Submit Feedback 🚀</button>
+        </form>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
-
-            <!-- About Section -->
             <div class="footer-column">
                 <h3>About Us</h3>
                 <p>We are a passionate team dedicated to delivering AI-powered solutions and web development projects.</p>
             </div>
 
-            <!-- Quick Links -->
             <div class="footer-column">
                 <h3>Quick Links</h3>
                 <a href="{{ url_for('index') }}">Home</a>
@@ -77,7 +79,6 @@
                 <a href="#">Privacy Policy</a>
             </div>
 
-            <!-- Contact Info -->
             <div class="footer-column">
                 <h3>Contact Us</h3>
                 <p>Email: support@example.com</p>
@@ -85,7 +86,6 @@
                 <p>Address: 123 AI Street, Tech City, India</p>
             </div>
 
-            <!-- Social Media -->
             <div class="footer-column">
                 <h3>Follow Us</h3>
                 <div class="social-icons">
@@ -97,11 +97,29 @@
             </div>
         </div>
 
-        <!-- Footer Bottom -->
         <div class="footer-bottom">
-            <p>&copy; 2025 YourWebsite. All Rights Reserved.</p>
+            <p>&copy; 2025 AI Nexus. All Rights Reserved.</p>
         </div>
     </footer>
 
+    <script>
+        // Hamburger Menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 80) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
 </html>
