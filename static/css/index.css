@@ -149,65 +149,183 @@ body::before {
 
 /* ==================== AI WORK SECTION ==================== */
 
+/* ==================== BEAUTIFUL RAINBOW AI BOXES ==================== */
+
 .ai-work-section {
-    padding: 110px 6% 90px;
+    padding: 120px 6% 100px;
     background: rgba(15, 23, 42, 0.95);
+    position: relative;
+    overflow: hidden;
 }
 
+.ai-work-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 30%, rgba(139, 92, 246, 0.08), transparent 60%);
+    pointer-events: none;
+}
+
+/* Container */
 .ai-box-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2.2rem;
+    gap: 2.5rem;
     max-width: 1400px;
     margin: 0 auto;
 }
 
+/* Main AI Box - Super Beautiful Version */
 .ai-box {
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(148, 163, 184, 0.2);
-    border-radius: 20px;
-    padding: 2.8rem 2rem;
-    transition: all 0.5s ease;
+    background: rgba(255, 255, 255, 0.06);
+    border: 2px solid transparent;
+    border-radius: 24px;
+    padding: 2.8rem 2.2rem;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
     opacity: 0;
-    transform: translateY(60px);
-    backdrop-filter: blur(10px);
+    transform: translateY(80px);
+    backdrop-filter: blur(12px);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
+/* Rainbow Animated Border */
+.ai-box::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 26px;
+    background: conic-gradient(
+        #ff0080, #ff8000, #ffff00, #00ff80, 
+        #00ffff, #0080ff, #8000ff, #ff0080
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    animation: rainbowRotate 8s linear infinite;
+    opacity: 0.85;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+}
+
+@keyframes rainbowRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Glow on Hover */
+.ai-box:hover::before {
+    opacity: 1;
+    animation-duration: 4s; /* faster when hovering */
+}
+
+.ai-box:hover {
+    transform: translateY(-20px) scale(1.03);
+    box-shadow: 0 30px 70px rgba(139, 92, 246, 0.35),
+                0 0 60px rgba(236, 72, 153, 0.25);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Visible Animation (from Intersection Observer) */
 .ai-box.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-.ai-box:hover {
-    transform: translateY(-15px);
-    border-color: #60a5fa;
-    box-shadow: 0 20px 40px rgba(96, 165, 250, 0.25);
+/* Beautiful Text Inside */
+.ai-box h2 {
+    font-size: 1.85rem;
+    font-weight: 800;
+    margin-bottom: 1.2rem;
+    background: linear-gradient(90deg, #e0f2fe, #c4b5fd, #f0abfc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.4s ease;
+    position: relative;
 }
 
-/* ==================== AI TOOL BUTTON ==================== */
+.ai-box:hover h2 {
+    background: linear-gradient(90deg, #a5b4fc, #f472b6, #60a5fa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transform: translateX(8px);
+}
 
+.ai-box p {
+    color: #cbd5e1;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    transition: all 0.4s ease;
+}
+
+.ai-box:hover p {
+    color: #e0f2fe;
+}
+
+/* Subtle shine effect on hover */
+.ai-box::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 40%;
+    height: 300%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.25),
+        transparent
+    );
+    transform: skewX(-25deg);
+    transition: all 0.8s;
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.ai-box:hover::after {
+    opacity: 1;
+    left: 120%;
+    transition: left 0.9s ease;
+}
 .button-container {
-    padding: 90px 20px;
+    padding: 100px 20px 120px;
     text-align: center;
     background: linear-gradient(to bottom, rgba(15,23,42,0.95), #0a0a0a);
 }
 
 .ai-tools-btn {
-    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899, #f43f5e);
+    background-size: 300% 300%;
     color: white;
-    font-size: clamp(1.25rem, 4vw, 1.5rem);
-    font-weight: 700;
-    padding: 20px 55px;
+    font-size: clamp(1.25rem, 4vw, 1.55rem);
+    font-weight: 800;
+    padding: 22px 60px;
     border-radius: 9999px;
     text-decoration: none;
     display: inline-block;
-    transition: all 0.4s ease;
+    box-shadow: 0 15px 35px rgba(139, 92, 246, 0.45);
+    transition: all 0.5s ease;
+    position: relative;
+    overflow: hidden;
+    animation: rainbowBtn 12s linear infinite;
+}
+
+@keyframes rainbowBtn {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .ai-tools-btn:hover {
-    transform: translateY(-6px);
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 25px 50px rgba(236, 72, 153, 0.5);
+    animation-duration: 6s; /* faster on hover */
 }
-
 /* ==================== FOOTER ==================== */
 
 .footer {
