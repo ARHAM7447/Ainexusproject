@@ -4,22 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Omni AI</title>
+
+    <!-- CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
+
 <body>
 
-    <!-- Navbar -->
+    <!-- ================= NAVBAR ================= -->
     <nav class="navbar">
-        <div class="logo">
-            <span>Omni AI</span>
-        </div>
+        <div class="logo">Omni AI</div>
+
         <div class="nav-links" id="navLinks">
+                <span class="close-btn" id="closeBtn">&times;</span>
             <a href="{{ url_for('feedback') }}">Feedback</a>
             <a href="{{ url_for('signup') }}">Signup</a>
             <a href="{{ url_for('login') }}">Login</a>
             <a href="{{ url_for('index') }}">Home</a>
         </div>
+
         <div class="hamburger" id="hamburger">
             <span></span>
             <span></span>
@@ -27,15 +31,16 @@
         </div>
     </nav>
 
-    <!-- Header -->
-    <header>
+    <!-- ================= HEADER ================= -->
+    <header class="header">
         <h1>🚀 About Our AI Project</h1>
         <p>We are passionate about building AI-driven solutions to make life easier.</p>
     </header>
 
-    <!-- About Content -->
+    <!-- ================= ABOUT SECTION ================= -->
     <section class="about-container">
         <div class="about-content">
+            
             <h2>Who We Are</h2>
             <p>We are a dedicated team focused on developing AI-powered tools for various industries.</p>
 
@@ -43,6 +48,7 @@
             <p>Our goal is to harness the power of artificial intelligence to create innovative and efficient solutions that transform the way people work and live.</p>
 
             <h2>Meet the Team</h2>
+
             <div class="team">
                 <div class="team-member">
                     <img src="{{ url_for('static', filename='Screenshot (558).png') }}" alt="Arham Khan">
@@ -50,15 +56,18 @@
                     <p>Developer</p>
                 </div>
             </div>
+
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ================= FOOTER ================= -->
     <footer class="footer">
+
         <div class="footer-container">
+
             <div class="footer-column">
                 <h3>About Us</h3>
-                <p>We are a passionate team dedicated to delivering AI-powered solutions and web development projects.</p>
+                <p>We deliver AI-powered solutions and modern web applications.</p>
             </div>
 
             <div class="footer-column">
@@ -71,14 +80,14 @@
             </div>
 
             <div class="footer-column">
-                <h3>Contact Us</h3>
+                <h3>Contact</h3>
                 <p>Email: support@example.com</p>
                 <p>Phone: +91 98765 43210</p>
                 <p>Address: 123 AI Street, Tech City, India</p>
             </div>
 
             <div class="footer-column">
-                <h3>Follow Us</h3>
+                <h3>Follow</h3>
                 <div class="social-icons">
                     <a href="#"><i class="fab fa-facebook"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
@@ -86,23 +95,24 @@
                     <a href="#"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
+
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2025 Omni AI. All Rights Reserved.</p>
+            <p>© 2025 Omni AI. All Rights Reserved.</p>
         </div>
+
     </footer>
 
+    <!-- ================= SCRIPT ================= -->
     <script>
-        // Hamburger Menu
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
+        const hamburger = document.getElementById("hamburger");
+        const navLinks = document.getElementById("navLinks");
 
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+        hamburger.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
         });
 
-        // Navbar Scroll Effect
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 80) {
@@ -111,6 +121,11 @@
                 navbar.classList.remove('scrolled');
             }
         });
+        const closeBtn = document.getElementById("closeBtn");
+
+closeBtn.addEventListener("click", () => {
+    navLinks.classList.remove("active");
+});
     </script>
 
 </body>

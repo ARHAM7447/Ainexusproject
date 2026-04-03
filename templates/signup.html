@@ -1,4 +1,3 @@
-<!-- templates/signup.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,12 +14,17 @@
         <div class="logo">
             <span>Omni AI</span>
         </div>
+
         <div class="nav-links" id="navLinks">
+            <!-- Close Button -->
+            <span class="close-btn" id="closeBtn">&times;</span>
+
             <a href="{{ url_for('feedback') }}">Feedback</a>
             <a href="{{ url_for('about') }}">About Us</a>
             <a href="{{ url_for('login') }}">Login</a>
             <a href="{{ url_for('index') }}">Home</a>
         </div>
+
         <div class="hamburger" id="hamburger">
             <span></span>
             <span></span>
@@ -58,9 +62,15 @@
         // Hamburger Menu
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
+        const closeBtn = document.getElementById('closeBtn');
 
         hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+            navLinks.classList.add('active');
+        });
+
+        // Close button
+        closeBtn.addEventListener("click", () => {
+            navLinks.classList.remove("active");
         });
 
         // Navbar Scroll Effect
@@ -74,6 +84,5 @@
         });
     </script>
 
-    
 </body>
 </html>

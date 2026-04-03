@@ -1,4 +1,4 @@
-/* ==================== NEW BEST MODERN AI THEME - Fully Responsive ==================== */
+/* ==================== NEW BEST MODERN AI THEME - Fully Responsive (FIXED) ==================== */
 
 * {
     margin: 0;
@@ -25,13 +25,15 @@ body::before {
     z-index: -2;
 }
 
+/* Background Animation */
 @keyframes gradientMove {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-/* Navbar */
+/* ==================== NAVBAR ==================== */
+
 .navbar {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -63,7 +65,6 @@ body::before {
 .nav-links {
     display: flex;
     gap: 2rem;
-    list-style: none;
 }
 
 .nav-links a {
@@ -80,7 +81,7 @@ body::before {
     background: rgba(96, 165, 250, 0.15);
 }
 
-/* Hamburger */
+/* Hamburger Menu */
 .hamburger {
     display: none;
     flex-direction: column;
@@ -96,7 +97,8 @@ body::before {
     transition: 0.4s;
 }
 
-/* Banner */
+/* ==================== BANNER IMAGE ==================== */
+
 .banner {
     width: 100%;
     height: 100vh;
@@ -113,13 +115,16 @@ body::before {
     z-index: 1;
 }
 
-/* Text Banner */
+/* ==================== TEXT BANNER ==================== */
+
 .main-content .banner {
     position: relative;
-    padding: 180px 6% 100px;
+    padding: 160px 6% 100px;
     text-align: center;
     z-index: 2;
-    margin-top: -100vh;
+
+    /* FIXED: Removed -100vh (causing mobile overlapping) */
+    margin-top: 0;
 }
 
 .main-content .banner h1 {
@@ -130,7 +135,6 @@ body::before {
 }
 
 .main-content .banner h1 span {
-    display: inline-block;
     background: linear-gradient(90deg, #bae6fd, #c4d0ff);
     -webkit-background-clip: text;
     background-clip: text;
@@ -143,7 +147,8 @@ body::before {
     margin: 0 auto;
 }
 
-/* AI Work Section */
+/* ==================== AI WORK SECTION ==================== */
+
 .ai-work-section {
     padding: 110px 6% 90px;
     background: rgba(15, 23, 42, 0.95);
@@ -179,13 +184,8 @@ body::before {
     box-shadow: 0 20px 40px rgba(96, 165, 250, 0.25);
 }
 
-.ai-box h2 {
-    font-size: 1.75rem;
-    margin-bottom: 1rem;
-    color: #e0f2fe;
-}
+/* ==================== AI TOOL BUTTON ==================== */
 
-/* Button */
 .button-container {
     padding: 90px 20px;
     text-align: center;
@@ -201,16 +201,15 @@ body::before {
     border-radius: 9999px;
     text-decoration: none;
     display: inline-block;
-    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
     transition: all 0.4s ease;
 }
 
 .ai-tools-btn:hover {
     transform: translateY(-6px);
-    box-shadow: 0 20px 40px rgba(139, 92, 246, 0.5);
 }
 
-/* Footer */
+/* ==================== FOOTER ==================== */
+
 .footer {
     background: #020617;
     padding: 100px 6% 50px;
@@ -224,57 +223,29 @@ body::before {
     margin: 0 auto;
 }
 
-.footer-column h3 {
-    color: #60a5fa;
-    margin-bottom: 1.6rem;
+/* ==================== RESPONSIVE FIXES ==================== */
+@media (max-width: 1024px) {
+    .main-content .banner {
+        padding-top: 200px;
+    }
 }
 
-.footer-column a {
-    color: #94a3b8;
-    text-decoration: none;
-    display: block;
-    margin-bottom: 12px;
-}
-
-.footer-column a:hover {
-    color: #e0f2fe;
-}
-
-.social-icons a {
-    font-size: 1.75rem;
-    margin-right: 18px;
-    color: #94a3b8;
-}
-
-.social-icons a:hover {
-    color: #60a5fa;
-}
-
-/* Scroll Animation */
-.fade-in-scroll {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 1s ease;
-}
-
-.fade-in-scroll.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* ==================== RESPONSIVE ==================== */
 @media (max-width: 768px) {
+
+    /* Mobile Navbar Drop-down */
     .nav-links {
-        position: fixed;
-        top: 0; left: 0; right: 0; bottom: 0;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 100%;
         background: rgba(15, 23, 42, 0.98);
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 2.5rem;
-        font-size: 1.5rem;
+        text-align: center;
         display: none;
-        z-index: 999;
+        padding: 1.5rem 0;
+        gap: 1.5rem;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
     }
 
     .nav-links.active {
@@ -285,22 +256,26 @@ body::before {
         display: flex;
     }
 
-    .ai-box-container {
-        grid-template-columns: 1fr;
-        gap: 1.8rem;
-    }
-
-    .ai-box {
-        padding: 2.2rem 1.6rem;
+    .banner {
+        height: 65vh;
+        object-position: center;
     }
 
     .main-content .banner {
         padding: 140px 5% 80px;
+    }
+
+    .ai-box-container {
+        grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 480px) {
     .navbar {
         padding: 1rem 5%;
+    }
+
+    .banner {
+        height: 55vh;
     }
 }

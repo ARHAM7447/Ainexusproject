@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback - Omni AI</title>
+
     <link rel="stylesheet" href="{{ url_for('static', filename='css/feedback.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    
-      
-
 </head>
+
 <body>
 
     <!-- Navbar -->
@@ -17,18 +16,30 @@
         <div class="logo">
             <span>Omni AI</span>
         </div>
+
+        <!-- Desktop Nav -->
         <div class="nav-links" id="navLinks">
             <a href="{{ url_for('about') }}">About Us</a>
             <a href="{{ url_for('signup') }}">Signup</a>
             <a href="{{ url_for('login') }}">Login</a>
-            <a href="{{ url_for('index') }}">Home</a>          
+            <a href="{{ url_for('index') }}">Home</a>
         </div>
+
+        <!-- Hamburger -->
         <div class="hamburger" id="hamburger">
             <span></span>
             <span></span>
             <span></span>
         </div>
     </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="{{ url_for('about') }}">About Us</a>
+        <a href="{{ url_for('signup') }}">Signup</a>
+        <a href="{{ url_for('login') }}">Login</a>
+        <a href="{{ url_for('index') }}">Home</a>
+    </div>
 
     <!-- Header -->
     <header>
@@ -102,24 +113,28 @@
         </div>
     </footer>
 
+    <!-- JavaScript -->
     <script>
-        // Hamburger Menu
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
+        const hamburger = document.getElementById("hamburger");
+        const mobileMenu = document.getElementById("mobileMenu");
 
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+        hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("active");
+            mobileMenu.classList.toggle("show");
         });
 
-        // Navbar Scroll Effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 80) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
+        document.querySelectorAll(".mobile-menu a").forEach(link => {
+            link.addEventListener("click", () => {
+                mobileMenu.classList.remove("show");
+                hamburger.classList.remove("active");
+            });
+        });
+
+        window.addEventListener("scroll", () => {
+            const navbar = document.querySelector(".navbar");
+            navbar.classList.toggle("scrolled", window.scrollY > 80);
         });
     </script>
+
 </body>
 </html>
