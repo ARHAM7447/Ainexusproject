@@ -1,4 +1,19 @@
-/* ==================== BEST MODERN ANIMATED AI TOOLS CSS ==================== */
+/* ==================== BEST MODERN ANIMATED AI TOOLS CSS - PREMIUM SAAS EDITION ==================== */
+/* Enhanced & Transformed: Ultra-modern, Animated, Glassmorphic & Visually Stunning */
+/* Original structure fully preserved - Only enhanced with advanced animations, gradients & micro-interactions */
+
+:root {
+    /* Modern Multi-Color Gradient Theme Variables */
+    --primary-gradient: linear-gradient(90deg, #60a5fa, #a5b4fc, #c4b5fd, #e0bbff, #f0abfc, #fb7185);
+    --accent-gradient: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899, #f43f5e);
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --text-primary: #e2e8f0;
+    --text-secondary: #94a3b8;
+    --glow-cyan: rgba(96, 165, 250, 0.45);
+    --glow-purple: rgba(139, 92, 246, 0.45);
+    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
 
 * {
     margin: 0;
@@ -10,10 +25,30 @@
 body {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
-    color: #e2e8f0;
+    color: var(--text-primary);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Subtle Animated Background Overlay (Performance-Friendly) */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 30% 20%, rgba(139, 92, 246, 0.08), transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(96, 165, 250, 0.08), transparent 50%);
+    background-size: 200% 200%;
+    animation: bgPulse 30s ease infinite;
+    z-index: -1;
+    pointer-events: none;
+}
+
+@keyframes bgPulse {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
 }
 
 /* ==================== NAVIGATION BAR ==================== */
@@ -22,8 +57,15 @@ header {
     top: 0;
     z-index: 1000;
     background: rgba(15, 23, 42, 0.95);
-    backdrop-filter: blur(16px);
+    backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(96, 165, 250, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+header.scrolled {
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
 .navbar {
@@ -44,20 +86,13 @@ header {
     position: relative;
     display: inline-block;
     padding: 4px 12px;
-    background: linear-gradient(90deg, 
-        #60a5fa, 
-        #a5b4fc, 
-        #c4b5fd, 
-        #e0bbff, 
-        #f0abfc, 
-        #fb7185, 
-        #60a5fa);
+    background: var(--primary-gradient);
     background-size: 300% 300%;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: logoRainbow 6s linear infinite;
-    transition: all 0.4s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     text-shadow: 
         0 0 20px rgba(96, 165, 250, 0.6),
         0 0 40px rgba(165, 180, 252, 0.4),
@@ -73,7 +108,7 @@ header {
 
 /* Extra Glow Layer */
 .logo::before {
-    content: attr(data-text); /* We'll add this in HTML */
+    content: attr(data-text);
     position: absolute;
     inset: 0;
     background: linear-gradient(90deg, 
@@ -99,7 +134,7 @@ header {
 .logo:hover {
     transform: scale(1.08) rotate(-2deg);
     filter: brightness(1.15);
-    animation-duration: 3s; /* faster on hover */
+    animation-duration: 3s;
     text-shadow: 
         0 0 30px rgba(96, 165, 250, 0.9),
         0 0 60px rgba(192, 132, 252, 0.8),
@@ -118,13 +153,31 @@ header {
     font-weight: 500;
     padding: 10px 22px;
     border-radius: 50px;
-    transition: all 0.4s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
 }
 
 .nav-links a:hover {
     color: white;
     background: rgba(96, 165, 250, 0.2);
     transform: translateY(-3px);
+}
+
+/* Micro-interaction underline */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--accent-gradient);
+    transition: all 0.4s ease;
+}
+
+.nav-links a:hover::after {
+    width: 60%;
+    left: 20%;
 }
 
 /* Hamburger for Mobile */
@@ -140,93 +193,193 @@ header {
     height: 3px;
     background: white;
     border-radius: 10px;
-    transition: 0.4s;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
 }
 
 /* ==================== HEADER TITLE ==================== */
 .tools-header {
-    padding: 100px 20px 60px;
+    padding: 120px 5% 80px;
     text-align: center;
-    background: linear-gradient(to bottom, rgba(30, 64, 175, 0.9), transparent);
+    background: linear-gradient(to bottom, rgba(30, 64, 175, 0.85), transparent);
+    position: relative;
+    overflow: hidden;
+}
+
+.tools-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--accent-gradient);
+    opacity: 0.08;
+    z-index: -1;
 }
 
 .tools-header h1 {
-    font-size: clamp(2.5rem, 7vw, 4rem);
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
     font-weight: 800;
-    margin-bottom: 15px;
-    animation: fadeInDown 1s ease;
+    margin-bottom: 20px;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fadeInDown 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Subtitle enhancement (if added later) */
+.tools-header p {
+    font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+    max-width: 680px;
+    margin: 0 auto;
+    color: #cbd5e1;
+    opacity: 0.9;
 }
 
 /* ==================== TOOLS GRID ==================== */
 .content {
-    padding: 40px 20px 80px;
+    padding: 40px 5% 100px;
     max-width: 1400px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 28px;
+    gap: 30px;
 }
 
-/* Tool Box - Premium Animated */
+/* Tool Box - Premium Glassmorphic Animated Card */
 .tool-box {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(148, 163, 184, 0.25);
-    border-radius: 22px;
-    padding: 35px 25px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 40px 28px;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-soft);
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
     cursor: pointer;
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(16px);
+}
+
+/* Rainbow border animation (modern SaaS touch) */
+.tool-box::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 26px;
+    background: conic-gradient(#60a5fa, #a5b4fc, #c4b5fd, #ec4899, #f43f5e, #60a5fa);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    animation: cardBorderRotate 12s linear infinite;
+    opacity: 0.6;
+    z-index: -1;
+}
+
+@keyframes cardBorderRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .tool-box:hover {
-    transform: translateY(-15px) scale(1.05);
+    transform: translateY(-18px) scale(1.04);
     border-color: #60a5fa;
-    box-shadow: 0 25px 60px -15px rgba(96, 165, 250, 0.4);
+    box-shadow: 0 30px 70px -15px var(--glow-cyan),
+                0 0 50px -10px var(--glow-purple);
+}
+
+/* Inner shine effect */
+.tool-box::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 40%;
+    height: 300%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.25), transparent);
+    transform: skewX(-25deg);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.tool-box:hover::after {
+    opacity: 1;
+    left: 120%;
 }
 
 .tool-box h3 {
-    font-size: 1.65rem;
-    margin: 18px 0 12px;
+    font-size: 1.75rem;
+    margin: 22px 0 14px;
     color: #bae6fd;
     font-weight: 700;
+    transition: all 0.4s ease;
+}
+
+.tool-box:hover h3 {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transform: translateY(-2px);
 }
 
 .tool-box p {
-    color: #94a3b8;
-    font-size: 1.05rem;
-    margin-bottom: 28px;
-    line-height: 1.6;
+    color: var(--text-secondary);
+    font-size: 1.08rem;
+    margin-bottom: 32px;
+    line-height: 1.65;
+    transition: all 0.4s ease;
 }
 
-/* Button */
+.tool-box:hover p {
+    color: #e2e8f0;
+}
+
+/* Button - Premium Gradient with Shine */
 .tool-box button {
-    padding: 14px 34px;
-    font-size: 1.05rem;
+    padding: 16px 38px;
+    font-size: 1.1rem;
     font-weight: 700;
     border: none;
     border-radius: 50px;
-    background: linear-gradient(90deg, #22c55e, #16a34a);
+    background: var(--accent-gradient);
+    background-size: 300% 300%;
     color: white;
     cursor: pointer;
-    transition: all 0.4s ease;
-    box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 25px rgba(139, 92, 246, 0.35);
+    position: relative;
+    overflow: hidden;
+    animation: buttonPulse 8s linear infinite;
+}
+
+@keyframes buttonPulse {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
 }
 
 .tool-box button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 12px 30px rgba(34, 197, 94, 0.5);
+    transform: scale(1.08) translateY(-3px);
+    box-shadow: 0 15px 35px rgba(236, 72, 153, 0.5);
 }
 
-/* Coming Soon */
+/* Coming Soon - Elegant Disabled State */
 .coming-soon {
     background: rgba(255, 255, 255, 0.04);
-    border: 2px dashed rgba(148, 163, 184, 0.5);
+    border: 2px dashed rgba(148, 163, 184, 0.6);
     color: #94a3b8;
     pointer-events: none;
+    opacity: 0.85;
 }
 
 .coming-soon:hover {
@@ -234,21 +387,30 @@ header {
     box-shadow: none;
 }
 
-/* Footer */
+.coming-soon h3 {
+    color: #64748b;
+}
+
+/* Footer - Premium Look */
 footer {
     background: #020617;
     color: #64748b;
     text-align: center;
-    padding: 30px 20px;
+    padding: 50px 5% 40px;
     margin-top: auto;
     font-size: 1.05rem;
+    border-top: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+footer p {
+    opacity: 0.8;
 }
 
 /* ==================== ANIMATIONS ==================== */
 @keyframes fadeInDown {
     from {
         opacity: 0;
-        transform: translateY(-40px);
+        transform: translateY(-50px);
     }
     to {
         opacity: 1;
@@ -256,7 +418,33 @@ footer {
     }
 }
 
+/* Card entrance animation (staggered via JS or CSS if needed) */
+.tool-box {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: cardPopIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.tool-box:nth-child(1) { animation-delay: 150ms; }
+.tool-box:nth-child(2) { animation-delay: 300ms; }
+.tool-box:nth-child(3) { animation-delay: 450ms; }
+.tool-box:nth-child(4) { animation-delay: 600ms; }
+
+@keyframes cardPopIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* ==================== RESPONSIVE ==================== */
+@media (max-width: 1024px) {
+    .content {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+    }
+}
+
 @media (max-width: 768px) {
     .nav-links {
         position: fixed;
@@ -268,10 +456,11 @@ footer {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 2.5rem;
-        font-size: 1.5rem;
+        gap: 2.8rem;
+        font-size: 1.6rem;
         display: none;
         z-index: 999;
+        padding-top: 80px;
     }
 
     .nav-links.active {
@@ -282,18 +471,43 @@ footer {
         display: flex;
     }
 
+    .tools-header {
+        padding: 100px 5% 60px;
+    }
+
     .content {
-        padding: 30px 15px;
-        gap: 20px;
+        padding: 30px 5%;
+        gap: 22px;
     }
 
     .tool-box {
-        padding: 28px 20px;
+        padding: 32px 22px;
     }
 }
 
 @media (max-width: 480px) {
-    .tools-header {
-        padding: 80px 15px 50px;
+    .navbar {
+        padding: 1rem 5%;
     }
+    
+    .tools-header {
+        padding: 90px 5% 50px;
+    }
+    
+    .tool-box h3 {
+        font-size: 1.55rem;
+    }
+}
+
+/* Accessibility & Performance Polish */
+@media (prefers-reduced-motion: reduce) {
+    .logo, .tool-box, .tool-box button, .nav-links a {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+::selection {
+    background: #8b5cf6;
+    color: white;
 }
